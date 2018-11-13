@@ -1,0 +1,48 @@
+{
+	"platform_id": 1,
+	"user_id": 1,
+	"user_first_name": "user_first_name",
+	"user_last_name": "user_last_name",
+	"previous_certificate_id": 1,
+	"public": false,
+	"view_latest": false,
+	"translations": [
+        {
+		    "language": "EN",
+		    "name": "test cert name",
+		    "description": "test cert description"
+	    }
+    ],
+	"items": [
+        {
+            "id": 1,
+            "type": "SKILL",
+            "on_site": true,
+            "completion_rate": 1,
+            "url": "http://test.test/item1",
+            "translations": [
+                {
+                    "language": "EN",
+                    "name": "test item name",
+                    "description": "test item description"
+                }
+            ],
+            "children": [
+                {
+                    "id": 2,
+                    "type": "ACTIVITY",
+                    "on_site": true,
+                    "completion_rate": 1,
+                    "url": "http://test.test/item11",
+                    "translations": [
+                        {
+                        "language": "EN",
+                        "name": "test subitem name",
+                        "description": "test subitem description"
+                        }
+                    ]
+                }
+            ]
+	    }
+    ]
+}
