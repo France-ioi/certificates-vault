@@ -2,6 +2,20 @@ angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location
 
     $scope.error = false;
 
+    // how to do this better? :)
+    $scope.placeholders = {}
+    $scope.$on('i18nextLanguageChange', function () {
+        $scope.$apply(function() {
+            $scope.placeholders = {
+                verification_code: $i18next.t('verification_code'),
+                first_name: $i18next.t('first_name'),
+                last_name: $i18next.t('last_name')
+            }
+        })
+    });
+
+
+
     function showCertificate(state) {
         $scope.params = state.params;
         $scope.data = state.data;

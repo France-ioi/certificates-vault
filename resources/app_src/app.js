@@ -11,7 +11,6 @@ require('./styles/styles.css')
 
 
 var app = angular.module('tdc', [
-    //'ngSanitize',
     'jm.i18next'
 ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(true);
@@ -39,7 +38,7 @@ var i18nextOpts = {
 i18nextOpts['backend'] = {
     'allowMultiLoading': false,
     'loadPath': function (lng, ns) {
-        return 'i18n/'+lng+'/'+ns+'.json';
+        return 'i18n/' + lng + '/' + ns+'.json';
     }
 };
 window.i18next.init(i18nextOpts);

@@ -1,28 +1,28 @@
 <div class="container" id="main">
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-10 col-11" id="content">
-            <h2>CONCOURS CASTOR</h2>
+            <h2 ng-i18next="header"></h2>
             <img src="/assets/images/castorinfo.png" width="200"/>
-            <h1>Verifier un certificat</h1>
-            <p id="prompt">Pour verifier un certificat utiliser le formulaire ci dessous. Aliquam tincidunt velit malesuada rutrum vehicula.</p>
+            <h1 ng-i18next="form_header"></h1>
+            <p id="prompt" ng-i18next="form_prompt"></p>
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="last_name" ng-model="params.last_name" placeholder="Nom" ng-focus="resetError()">
+                    <input type="text" class="form-control" id="last_name" ng-model="params.last_name" placeholder="{{placeholders.last_name}}" ng-focus="resetError()">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="first_name" ng-model="params.first_name" placeholder="Prenom" ng-focus="resetError()">
+                    <input type="text" class="form-control" id="first_name" ng-model="params.first_name" placeholder="{{placeholders.first_name}}" ng-focus="resetError()">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="code" ng-model="params.code" placeholder="Code de verification" ng-focus="resetError()">
+                    <input type="text" class="form-control" id="code" ng-model="params.code" placeholder="{{placeholders.verification_code}}" ng-focus="resetError()">
                 </div>
                 <button id="submitForm" type="submit" class="btn btn-primary" ng-click="getCertificate()">
-                    <i class="fa fa-check"></i> VERIFIER
+                    <i class="fa fa-check"></i> <span ng-i18next="form_submit"></span>
                 </button>
             </form>
-            <div class="alert alert-danger not-found" ng-if="error">Certificate not found.</div>
-            <p id="discoverText">Vous souhaitez decouvrir notre plateforme?</p>
+            <div class="alert alert-danger not-found" ng-if="error" ng-i18next="form_not_found"></div>
+            <p id="discoverText" ng-i18next="form_discover"></p>
             <button id="discoverLink" type="button" class="btn btn-primary">
-                <i class="fa fa-desktop"></i> DECOUVRIR CONCOURS CASTOR
+                <i class="fa fa-desktop"></i> <span ng-i18next="form_platform_link"></span>
             </button>
         </div>
     </div>

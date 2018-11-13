@@ -1,0 +1,22 @@
+{
+    "header": "CONCOURS CASTOR",
+
+    "verification_code": "Code de verification",
+    "last_name": "Nom",
+    "first_name": "Prenom",
+
+    "form_header": "Verifier un certificat",
+    "form_prompt": "Pour verifier un certificat utiliser le formulaire ci dessous. Aliquam tincidunt velit malesuada rutrum vehicula.",
+    "form_submit": "VERIFIER",
+    "form_not_found": "Certificate not found.",
+    "form_discover": "Vous souhaitez decouvrir notre plateforme?",
+    "form_platform_link": "DECOUVRIR CONCOURS CASTOR",
+
+    "cert_created_at": "Delivre le",
+    "cert_header": "Certificat de competences",
+
+    "cert_verify": "Verifez ce certificat sur:",
+    "cert_items_h1": "COMPETENCES VALIDEES",
+    "cert_items_h2": "TAUX DE VALIDATION",
+    "cert_items_note": "activite validee en presentiel"
+}
