@@ -1,5 +1,6 @@
 angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location', '$i18next', function($scope, $http, $location, $i18next) {
 
+
     $scope.error = false;
 
     // how to do this better? :)
@@ -13,6 +14,8 @@ angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location
             }
         })
     });
+
+    $scope.site_url = window.location.origin;
 
 
 

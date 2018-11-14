@@ -31,7 +31,7 @@ class Search
             ->where('external_id', $user_id)
             ->firstOrFail();
 
-        $cert_versions = CertificateVersion::query()
+        return CertificateVersion::query()
             ->whereIn('certificate_id', function($q) use ($user) {
                 $q->select('id')
                     ->from('certificates')

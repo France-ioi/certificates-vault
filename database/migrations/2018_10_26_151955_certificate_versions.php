@@ -18,8 +18,8 @@ class CertificateVersions extends Migration
             $table->timestamps();
             $table->integer('certificate_id')->unsigned()->index();
             $table->foreign('certificate_id')->references('id')->on('certificates')->onDelete('cascade');
-            $table->string('verification_code');
-            $table->string('user_hash');
+            $table->string('verification_code', 20);
+            $table->string('user_hash', 40);
             $table->unique(['user_hash', 'verification_code']);
             $table->integer('views')->unsigned();
         });
