@@ -20,11 +20,13 @@ class CertificateVersion extends Model
         'verification_code',
         'views',
         'created_at',
-        'items'
+        'items',
+        'translations'
     ];
 
     protected $appends = [
-        'items'
+        'items',
+        'translations'
     ];
 
 
@@ -45,5 +47,22 @@ class CertificateVersion extends Model
             $res[$ci->parent_id]['children'][] = $ci->toArray();
         }
         return array_values($res);
+    }
+
+
+    public function certificateStrings() {
+        return $this->hasMany('App\CertificateString', 'certificate_id');
+    }
+
+
+    public function getTranslationsAttribute() {
+        $res = [];
+        foreach($this->certificateStrings as $str) {
+            $res[$str->language->code] = [
+                'name' => $str->name,
+                'description' => $str->description
+            ];
+        }
+        return $res;
     }
 }

@@ -24,6 +24,7 @@ class CertificatesItems extends Migration
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->integer('completion_rate');
             $table->boolean('on_site');
+            $table->date('date');
         });
     }
 

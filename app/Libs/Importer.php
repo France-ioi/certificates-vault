@@ -9,7 +9,7 @@ use App\CertificateVersion;
 use App\CertificateItem;
 use App\Item;
 use App\ItemString;
-
+use App\CertificateString;
 
 class Importer
 {
@@ -65,6 +65,8 @@ class Importer
         $cert->latest_version_id = $cert_version->id;
         $cert->save();
 
+        $this->syncCertificateStrings($cert, $data['translations']);
+
         $this->createItems(
             $data['platform_id'],
             $data['items'],
@@ -97,6 +99,20 @@ class Importer
     }
 
 
+
+    private function syncCertificateStrings($cert, $strings) {
+        foreach($strings as $str) {
+            CertificateString::create([
+                'certificate_id' => $cert->id,
+                'language_id' => $this->languages_cache->getId($str['language']),
+                'name' => $str['name'],
+                'description' => $str['description']
+            ]);
+        }
+    }
+
+
+
     private function createItems($platform_id, $items_array, $cert_version, $parent_cert_item = null) {
         foreach($items_array as $item_data) {
             if(!($item = Item::find($item_data['id']))) {
@@ -113,7 +129,8 @@ class Importer
                 'parent_id' => $parent_cert_item ? $parent_cert_item->id : null,
                 'item_id' => $item->id,
                 'on_site' => $item_data['on_site'],
-                'completion_rate' => $item_data['completion_rate']
+                'completion_rate' => $item_data['completion_rate'],
+                'date' => $item_data['date']
             ]);
 
             if(isset($item_data['children']) && is_array($item_data['children'])) {

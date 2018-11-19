@@ -14,4 +14,9 @@ class CertificateString extends Model
         'description',
     ];
 
+
+    public function language() {
+        return $this->belongsTo('App\Language');
+    }
+
 }

@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller;
 use App\Libs\Search;
-
+use App\Language;
 
 class AppController extends Controller
 {
 
     public function index() {
         return view('app.index', [
-            'app_state' => null
+            'app_state' => null,
+            'data' => [
+                'languages' => Language::get()
+            ]
         ]);
     }
 
@@ -30,7 +33,10 @@ class AppController extends Controller
                 ]
             ];
             return view('app.index', [
-                'app_state' => $app_state
+                'app_state' => $app_state,
+                'data' => [
+                    'languages' => Language::get()
+                ]
             ]);
         }
         return redirect('/');

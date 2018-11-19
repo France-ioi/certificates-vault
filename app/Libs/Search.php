@@ -16,6 +16,8 @@ class Search
             ->where('user_hash', $hash)
             ->where('verification_code', $code)
             ->with([
+                'certificateStrings',
+                'certificateStrings.language',
                 'certificateItems',
                 'certificateItems.item',
                 'certificateItems.item.itemStrings',
@@ -39,6 +41,8 @@ class Search
                     ->where('public', true);
             })
             ->with([
+                'certificateStrings',
+                'certificateStrings.language',
                 'certificateItems',
                 'certificateItems.item',
                 'certificateItems.item.itemStrings',

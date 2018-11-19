@@ -17,6 +17,7 @@ class Languages extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('code', 2);
+            $table->string('name');
         });
     }
 

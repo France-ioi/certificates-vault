@@ -9,7 +9,8 @@ class LanguagesSeeder extends Seeder
     public function run()
     {
         \App\Language::create([
-            'code' => 'EN'
+            'code' => 'EN',
+            'name' => 'English'
         ]);
     }
 }

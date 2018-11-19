@@ -12,7 +12,8 @@ class CertificateItem extends Model
         'certificate_version_id',
         'item_id',
         'on_site',
-        'completion_rate'
+        'completion_rate',
+        'date'
     ];
 
 
