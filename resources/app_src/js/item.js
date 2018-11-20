@@ -7,6 +7,21 @@ angular.module('tdc').directive('item', function () {
         },
         controller: ['$scope', function ($scope) {
 
+            $scope.trophy_icon = false;
+
+            console.log($scope.data.children)
+            if($scope.data.children && $scope.data.type == 'SKILL') {
+                for(var i=0; i<$scope.data.children.length; i++) {
+                    var item = $scope.data.children[i];
+                    if(item.type == 'ACTIVITY' && item.on_site) {
+                        $scope.trophy_icon = true;
+                        break;
+                    }
+                }
+            }
+
+
+
             function translate(lng) {
                 $scope.name = $scope.data.translations[lng].name;
                 $scope.description = $scope.data.translations[lng].description;

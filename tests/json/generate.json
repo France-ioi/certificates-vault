@@ -24,7 +24,7 @@
             "type": "SKILL",
             "on_site": true,
             "date": "2018-05-01",
-            "completion_rate": 1,
+            "completion_rate": 100,
             "url": "http://test.test/item1",
             "translations": [
                 {
@@ -44,7 +44,7 @@
                     "type": "ACTIVITY",
                     "on_site": true,
                     "date": "2018-05-01",
-                    "completion_rate": 1,
+                    "completion_rate": 100,
                     "url": "http://test.test/item11",
                     "translations": [
                         {
