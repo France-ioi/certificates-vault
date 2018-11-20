@@ -9,7 +9,6 @@ angular.module('tdc').directive('item', function () {
 
             $scope.trophy_icon = false;
 
-            console.log($scope.data.children)
             if($scope.data.children && $scope.data.type == 'SKILL') {
                 for(var i=0; i<$scope.data.children.length; i++) {
                     var item = $scope.data.children[i];

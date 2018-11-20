@@ -1,5 +1,10 @@
-angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location', '$i18next', function($scope, $http, $location, $i18next) {
+angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$http', '$location', '$i18next', function($scope, $rootScope, $http, $location, $i18next) {
 
+    function certPath(user, code) {
+        return encodeURIComponent(user.first_name) + '/' +
+        encodeURIComponent(user.last_name) + '/' +
+        encodeURIComponent(code);
+    }
 
     $scope.lng = window.APP_DATA.default_language;
 
@@ -24,6 +29,13 @@ angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location
         $scope.data = state.data;
         $scope.curTemplate = require('../templates/certificate.html');
         translate();
+
+        if(state.data.latest_version_code) {
+            $rootScope.latest_version_path = '/certificate/' +
+                certPath(state.params, state.data.latest_version_code);
+        } else {
+            $rootScope.latest_version_path = false;
+        }
     }
 
 
@@ -69,10 +81,8 @@ angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location
     }
 
     $scope.getCertificate = function() {
-        var url_path =
-            encodeURIComponent($scope.params.first_name) + '/' +
-            encodeURIComponent($scope.params.last_name) + '/' +
-            encodeURIComponent($scope.params.code);
+        var url_path = certPath($scope.params, $scope.params.code);
+
         $http.get('/certificates/' + url_path, {responseType: 'json'}).then(function(res) {
             if(res && res.data.success) {
                 var state = {

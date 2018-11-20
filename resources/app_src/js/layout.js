@@ -1,6 +1,8 @@
 angular.module('tdc').controller('layoutController', ['$scope', function($scope) {
 
-    //if(window.APP_DATA.)
-    //$scope.latest_version_url =
+    $scope.$on('tdc.certLoaded', function(e, data) {
+        $scope.latest_version_url = data.latest_version_path;
+        console.log(data)
+    })
 
 }]);
