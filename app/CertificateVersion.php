@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CertificateVersion extends Model
 {
 
+
     protected $fillable = [
         'certificate_id',
         'verification_code',
@@ -22,13 +23,15 @@ class CertificateVersion extends Model
         'created_at',
         'items',
         'translations',
-        'latest_version_code'
+        'latest_version_code',
+        'public_list_available'
     ];
 
     protected $appends = [
         'items',
         'translations',
-        'latest_version_code'
+        'latest_version_code',
+        'public_list_available'
     ];
 
 
@@ -81,6 +84,11 @@ class CertificateVersion extends Model
             }
         }
         return null;
+    }
+
+
+    public function getPublicListAvailableAttribute() {
+        return $this->certificate->public;
     }
 
 }

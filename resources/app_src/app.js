@@ -14,6 +14,12 @@ var app = angular.module('tdc', [
     'jm.i18next'
 ]).config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(true);
+}]).filter('toDate', ['$filter', function($filter) {
+    var angularDateFilter = $filter('date');
+    return function(str) {
+        var d = new Date(str);
+        return angularDateFilter(d, window.APP_DATA.date_format);
+    }
 }]);
 
 require('./js/controller')

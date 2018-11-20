@@ -42,7 +42,8 @@ class AppController extends Controller
     private function appData() {
         return [
             'default_language' => env('DEFAULT_LANGUAGE', 'en'),
-            'languages' => Language::get()
+            'languages' => Language::get(),
+            'date_format' => env('DATE_FORMAT', 'yy-MM-dd')
         ];
     }
 }

@@ -8,7 +8,7 @@
                 <li class="nav-item" ng-if="latest_version_path">
                     <a class="nav-link" href="{{latest_version_path}}" target="_self" ng-i18next="nav_latest_version"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" ng-if="public_list_available">
                     <a class="nav-link" href="#" ng-i18next="nav_public_list"></a>
                 </li>
             </ul>

@@ -36,6 +36,7 @@ angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$htt
         } else {
             $rootScope.latest_version_path = false;
         }
+        $rootScope.public_list_available = state.data.public_list_available;
     }
 
 
