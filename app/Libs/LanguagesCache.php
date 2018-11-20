@@ -14,12 +14,13 @@ class LanguagesCache
     }
 
     public function getId($code) {
+        $code = strtolower($code);
         if(!isset($this->data[$code])) {
             $lng = Language::create([
                 'code' => $code,
                 'name' => $code
             ]);
-            $this->data[$code] = $lng;
+            $this->data[$code] = $lng->id;
         }
         return $this->data[$code];
     }

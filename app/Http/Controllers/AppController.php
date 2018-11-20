@@ -12,9 +12,7 @@ class AppController extends Controller
     public function index() {
         return view('app.index', [
             'app_state' => null,
-            'data' => [
-                'languages' => Language::get()
-            ]
+            'app_data' => $this->appData()
         ]);
     }
 
@@ -34,11 +32,17 @@ class AppController extends Controller
             ];
             return view('app.index', [
                 'app_state' => $app_state,
-                'data' => [
-                    'languages' => Language::get()
-                ]
+                'app_data' => $this->appData()
             ]);
         }
         return redirect('/');
+    }
+
+
+    private function appData() {
+        return [
+            'default_language' => env('DEFAULT_LANGUAGE', 'en'),
+            'languages' => Language::get()
+        ];
     }
 }

@@ -17,7 +17,10 @@ var app = angular.module('tdc', [
 }]);
 
 require('./js/controller')
+require('./js/layout')
+require('./js/language_select')
 require('./js/item')
+require('./templates/layout.html')
 require('./templates/verification.html')
 require('./templates/certificate.html')
 require('./templates/item.html')
@@ -29,16 +32,17 @@ window.i18nextXHRBackend = require('i18next-xhr-backend');
 require('ng-i18next');
 window.i18next.use(window.i18nextXHRBackend);
 
+
 var i18nextOpts = {
-    lng: 'en',
-    fallbackLng: ['en', 'fr'],
+    lng: window.APP_DATA.default_language,
+    fallbackLng: ['en'],
     fallbackNS: 'tdc',
     ns: ['tdc'],
   };
 i18nextOpts['backend'] = {
     'allowMultiLoading': false,
     'loadPath': function (lng, ns) {
-        return 'i18n/' + lng + '/' + ns+'.json';
+        return 'i18n/' + lng + '/' + ns + '.json';
     }
 };
 window.i18next.init(i18nextOpts);

@@ -6,8 +6,18 @@ angular.module('tdc').directive('item', function () {
             data: '='
         },
         controller: ['$scope', function ($scope) {
-            $scope.name = $scope.data.translations['EN'].name;
-            $scope.description = $scope.data.translations['EN'].description;
+
+            function translate(lng) {
+                $scope.name = $scope.data.translations[lng].name;
+                $scope.description = $scope.data.translations[lng].description;
+            }
+
+            translate(window.APP_DATA.default_language);
+
+            $scope.$on('tdc.languageChange', function(e, lng) {
+                translate(lng);
+            })
+
         }]
     }
 });

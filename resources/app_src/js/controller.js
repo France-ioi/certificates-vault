@@ -1,29 +1,31 @@
 angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location', '$i18next', function($scope, $http, $location, $i18next) {
 
 
+    $scope.lng = window.APP_DATA.default_language;
+
+    $scope.$on('tdc.languageChange', function(e, lng) {
+        $scope.lng = lng;
+        translate();
+    })
+
+    $scope.layout_tpl = require('../templates/layout.html');
     $scope.error = false;
-
-    // how to do this better? :)
-    $scope.placeholders = {}
-    $scope.$on('i18nextLanguageChange', function () {
-        $scope.$apply(function() {
-            $scope.placeholders = {
-                verification_code: $i18next.t('verification_code'),
-                first_name: $i18next.t('first_name'),
-                last_name: $i18next.t('last_name')
-            }
-        })
-    });
-
     $scope.site_url = window.location.origin;
 
+
+    function translate() {
+        if(!$scope.data) return;
+        $scope.strings = $scope.data.translations[$scope.lng];
+    }
 
 
     function showCertificate(state) {
         $scope.params = state.params;
         $scope.data = state.data;
         $scope.curTemplate = require('../templates/certificate.html');
+        translate();
     }
+
 
     function showForm() {
         $scope.params = {
@@ -35,11 +37,16 @@ angular.module('tdc').controller('tdcController', ['$scope', '$http', '$location
         $scope.curTemplate = require('../templates/verification.html');
     }
 
-    if(window.__APP_STATE) {
-        showCertificate(window.__APP_STATE);
+    if(window.APP_STATE) {
+        showCertificate(window.APP_STATE);
     } else {
         showForm();
     }
+
+
+    $scope.$on('tdc.languageChange', function(e, lng) {
+        translate(lng);
+    })
 
 
     $scope.$on('$locationChangeStart', function(e, new_url, old_url){

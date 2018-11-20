@@ -12,4 +12,9 @@ class Language extends Model
         'name'
     ];
 
+
+    protected $visible = [
+        'code',
+        'name'
+    ];
 }

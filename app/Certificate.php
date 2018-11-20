@@ -15,5 +15,8 @@ class Certificate extends Model
     ];
 
 
+    public function latestVersion() {
+        return $this->belongsTo('App\CertificateVersion');
+    }
 
 }

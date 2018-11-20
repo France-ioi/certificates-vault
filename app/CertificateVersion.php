@@ -21,14 +21,20 @@ class CertificateVersion extends Model
         'views',
         'created_at',
         'items',
-        'translations'
+        'translations',
+        'latest_version_code'
     ];
 
     protected $appends = [
         'items',
-        'translations'
+        'translations',
+        'latest_version_code'
     ];
 
+
+    public function certificate() {
+        return $this->belongsTo('App\Certificate');
+    }
 
     public function certificateItems() {
         return $this->hasMany('App\CertificateItem');
@@ -65,4 +71,16 @@ class CertificateVersion extends Model
         }
         return $res;
     }
+
+
+    public function getLatestVersionCodeAttribute() {
+        if($this->certificate->view_latest) {
+            $lid = $this->certificate->latest_version_id;
+            if($lid && $lid !== $this->id) {
+                return $this->certificate->latestVersion->verification_code;
+            }
+        }
+        return null;
+    }
+
 }

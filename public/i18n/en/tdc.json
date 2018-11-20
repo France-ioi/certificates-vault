@@ -1,9 +1,12 @@
 {
+    "nav_latest_version": "Latest version",
+    "nav_public_list": "Public certificates",
+
     "header": "CONCOURS CASTOR",
 
-    "verification_code": "Code de verification",
-    "last_name": "Nom",
-    "first_name": "Prenom",
+    "verification_code": "Verification code",
+    "last_name": "Last name",
+    "first_name": "First name",
 
     "form_header": "Verifier un certificat",
     "form_prompt": "Pour verifier un certificat utiliser le formulaire ci dessous. Aliquam tincidunt velit malesuada rutrum vehicula.",
@@ -13,7 +16,7 @@
     "form_platform_link": "DECOUVRIR CONCOURS CASTOR",
 
     "cert_created_at": "Delivre le",
-    "cert_header": "Certificat de competences",
+    "cert_header": "Certificate of competence",
 
     "cert_verify": "Verifez ce certificat sur:",
     "cert_items_h1": "COMPETENCES VALIDEES",

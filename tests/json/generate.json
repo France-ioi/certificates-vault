@@ -9,8 +9,13 @@
 	"translations": [
         {
 		    "language": "EN",
-		    "name": "test cert name",
-		    "description": "test cert description"
+		    "name": "test cert name EN",
+		    "description": "test cert description EN"
+        },
+        {
+		    "language": "FR",
+		    "name": "test cert name FR",
+		    "description": "test cert description FR"
 	    }
     ],
 	"items": [
@@ -24,8 +29,13 @@
             "translations": [
                 {
                     "language": "EN",
-                    "name": "test item name",
-                    "description": "test item description"
+                    "name": "test item name EN",
+                    "description": "test item description EN"
+                },
+                {
+                    "language": "FR",
+                    "name": "test item name FR",
+                    "description": "test item description FR"
                 }
             ],
             "children": [
@@ -38,9 +48,14 @@
                     "url": "http://test.test/item11",
                     "translations": [
                         {
-                        "language": "EN",
-                        "name": "test subitem name",
-                        "description": "test subitem description"
+                            "language": "EN",
+                            "name": "test subitem name EN",
+                            "description": "test subitem description EN"
+                        },
+                        {
+                            "language": "FR",
+                            "name": "test subitem name FR",
+                            "description": "test subitem description FR"
                         }
                     ]
                 }
