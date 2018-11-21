@@ -19,4 +19,8 @@ class Certificate extends Model
         return $this->belongsTo('App\CertificateVersion');
     }
 
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

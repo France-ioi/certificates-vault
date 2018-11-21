@@ -16,6 +16,8 @@ class Search
             ->where('user_hash', $hash)
             ->where('verification_code', $code)
             ->with([
+                'certificate',
+                'certificate.user',
                 'certificateStrings',
                 'certificateStrings.language',
                 'certificateItems',

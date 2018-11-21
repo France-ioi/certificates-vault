@@ -1,54 +1,58 @@
-<div class="row">
-    <div class="col-12" id="content">
-        <h2><span ng-i18next="cert_created_at"></span> {{data.created_at|toDate}}</h2>
-        <div id="header" ng-i18next="cert_header"></div>
-        <h1 ng-model="data.name"></h1>
-        <div class="row">
-            <div class="col-6">
-                <img id="quotationMarks" src="/assets/images/quotation-marks.png" width="30">
-                <span>{{ strings.description }}</span>
-                <p id="quoteName">{{ params.first_name }} {{ params.last_name }}</p>
-            </div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-md-12 col-lg-7" ng-if="data">
-                        <img ng-src="{{getQRCodeUrl()}}" width="200">
-                    </div>
-                    <div id="codeDetails" class="col-md-12 col-lg-5">
-                        <h3 ng-i18next="verification_code"></h3>
-                        <p id="verificationCode">{{ data.verification_code }}</p>
-                        <p class="codeName"><span ng-i18next="last_name"></span>: {{ params.last_name }}</p>
-                        <p class="codeName"><span ng-i18next="first_name"></span>: {{ params.first_name }}</p>
-                    </div>
+<div class="alert alert-danger not-found" ng-if="error" ng-i18next="form_not_found"></div>
+<div ng-include="'/spinner.html'" ng-if="loading"></div>
+<div ng-if="data">
+    <div class="row">
+        <div class="col-12" id="content">
+            <h2><span ng-i18next="cert_created_at"></span> {{data.created_at|toDate}}</h2>
+            <div id="header" ng-i18next="cert_header"></div>
+            <h1 ng-model="data.name"></h1>
+            <div class="row">
+                <div class="col-6">
+                    <img id="quotationMarks" src="/assets/images/quotation-marks.png" width="30">
+                    <span>{{ strings.description }}</span>
+                    <p id="quoteName">{{ params.first_name }} {{ params.last_name }}</p>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <p id="verifyCertificate" ng-i18next="cert_verify"></p>
-                        <p id="verifyURL"><a href="{{site_url}}" target="_self">{{site_url}}</a></p>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-7" ng-if="data">
+                            <img ng-src="{{getQRCodeUrl()}}" width="200">
+                        </div>
+                        <div id="codeDetails" class="col-md-12 col-lg-5">
+                            <h3 ng-i18next="verification_code"></h3>
+                            <p id="verificationCode">{{ data.verification_code }}</p>
+                            <p class="codeName"><span ng-i18next="last_name"></span>: {{ params.last_name }}</p>
+                            <p class="codeName"><span ng-i18next="first_name"></span>: {{ params.first_name }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p id="verifyCertificate" ng-i18next="cert_verify"></p>
+                            <p id="verifyURL"><a href="{{site_url}}" target="_self">{{site_url}}</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div id="skillsTableHeader" class="row">
-    <div class="text-left col-8">
-        <h3 ng-i18next="cert_items_h1"></h3>
-    </div>
-    <div class="text-right col-4">
-        <h3 ng-i18next="cert_items_h2"></h3>
-    </div>
-</div>
-<div ng-repeat="item in data.items" class="itemRow">
-    <item data="item"></item>
-    <div class="subItems">
-        <div ng-repeat="child in item.children">
-            <item data="child"></item>
+    <div id="skillsTableHeader" class="row">
+        <div class="text-left col-8">
+            <h3 ng-i18next="cert_items_h1"></h3>
+        </div>
+        <div class="text-right col-4">
+            <h3 ng-i18next="cert_items_h2"></h3>
         </div>
     </div>
-</div>
-<div id="skillsTableFooter" class="row">
-    <div class="text-left col-8">
-        <span id="tableKey"><i class="fa fa-trophy"></i> = <span ng-i18next="cert_items_note"></span></span>
+    <div ng-repeat="item in data.items" class="itemRow">
+        <item data="item"></item>
+        <div class="subItems">
+            <div ng-repeat="child in item.children">
+                <item data="child"></item>
+            </div>
+        </div>
+    </div>
+    <div id="skillsTableFooter" class="row">
+        <div class="text-left col-8">
+            <span id="tableKey"><i class="fa fa-trophy"></i> = <span ng-i18next="cert_items_note"></span></span>
+        </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
         <script type="text/javascript" src="/assets/vendor.js"></script>
         <script type="text/javascript" src="/assets/app.js"></script>
     </head>
-    <body ng-app="tdc" ng-controller="tdcController">
-        <div ng-include="layout_tpl"></div>
+    <body ng-app="tdc" ng-controller="LayoutController">
+        <div ng-include="'/layout.html'"></div>
     </body>
 </html>

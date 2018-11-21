@@ -1,15 +1,15 @@
-<div class="container" id="main" ng-controller="layoutController">
+<div class="container" id="main">
     <nav class="navbar navbar-expand-lg navbar-light bg-light  d-print-none">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbarNavDropdown" class="navbar-collapse collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item" ng-if="latest_version_path">
-                    <a class="nav-link" href="{{latest_version_path}}" target="_self" ng-i18next="nav_latest_version"></a>
+                <li class="nav-item" ng-if="latest_version_url">
+                    <a class="nav-link" ng-href="{{latest_version_url}}" ng-i18next="nav_latest_version"></a>
                 </li>
-                <li class="nav-item" ng-if="public_list_available">
-                    <a class="nav-link" href="/public_certificates" ng-i18next="nav_public_list"></a>
+                <li class="nav-item" ng-if="public_certificates_url">
+                    <a class="nav-link" href="{{public_certificates_url}}" ng-i18next="nav_public_list"></a>
                 </li>
             </ul>
 
@@ -23,5 +23,5 @@
         </div>
     </nav>
 
-    <div ng-include="curTemplate"></div>
+    <ui-view></ui-view>
 </div>

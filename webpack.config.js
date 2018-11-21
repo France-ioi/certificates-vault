@@ -90,7 +90,7 @@ module.exports = function(env) {
                         {
                             loader: 'ngtemplate-loader',
                             options: {
-                                relativeTo: __dirname
+                                relativeTo: path.resolve(__dirname, 'resources/app_src/templates')
                             }
                         },
                         'html-loader'

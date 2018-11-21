@@ -24,14 +24,17 @@ class CertificateVersion extends Model
         'items',
         'translations',
         'latest_version_code',
-        'public_list_available'
+        'public_list_available',
+        'user'
     ];
 
     protected $appends = [
         'items',
         'translations',
         'latest_version_code',
-        'public_list_available'
+        'public_list_available',
+        'platform_id',
+        'user'
     ];
 
 
@@ -89,6 +92,14 @@ class CertificateVersion extends Model
 
     public function getPublicListAvailableAttribute() {
         return $this->certificate->public;
+    }
+
+
+    public function getUserAttribute() {
+        return [
+            'id' => $this->certificate->user->id,
+            'platform_id' => $this->certificate->user->platform_id
+        ];
     }
 
 }

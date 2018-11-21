@@ -18,6 +18,11 @@ class AppController extends Controller
 
 
     public function search($first_name, $last_name, $code) {
+        return view('app', [
+            'app_state' => null,
+            'app_data' => $this->appData()
+        ]);
+        /*
         $cert_version = Search::certificateVersion($first_name, $last_name, $code);
         if($cert_version) {
             $cert_version->views = $cert_version->views + 1;
@@ -36,6 +41,7 @@ class AppController extends Controller
             ]);
         }
         return redirect('/');
+        */
     }
 
 
