@@ -22,7 +22,8 @@ class CertificateItem extends Model
         'on_site',
         'completion_rate',
         'type',
-        'translations'
+        'translations',
+        'date'
     ];
 
 

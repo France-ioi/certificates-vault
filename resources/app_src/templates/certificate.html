@@ -39,7 +39,7 @@
         <h3 ng-i18next="cert_items_h2"></h3>
     </div>
 </div>
-<div ng-repeat="item in data.items">
+<div ng-repeat="item in data.items" class="itemRow">
     <item data="item"></item>
     <div class="subItems">
         <div ng-repeat="child in item.children">

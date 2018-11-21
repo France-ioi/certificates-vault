@@ -13,7 +13,7 @@ angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$htt
         translate();
     })
 
-    $scope.layout_tpl = require('../templates/layout.html');
+    $scope.layout_tpl = require('../../templates/layout.html');
     $scope.error = false;
     $scope.site_url = window.location.origin;
 
@@ -27,7 +27,7 @@ angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$htt
     function showCertificate(state) {
         $scope.params = state.params;
         $scope.data = state.data;
-        $scope.curTemplate = require('../templates/certificate.html');
+        $scope.curTemplate = require('../../templates/certificate.html');
         translate();
 
         if(state.data.latest_version_code) {
@@ -47,7 +47,9 @@ angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$htt
             code: ''//'dJrrYYaz'
         };
         $scope.data = null;
-        $scope.curTemplate = require('../templates/verification.html');
+        $scope.curTemplate = require('../../templates/verification.html');
+        $scope.platform_url = window.APP_DATA.platform_url;
+        console.log($scope.platform_url)
     }
 
     if(window.APP_STATE) {
@@ -68,7 +70,7 @@ angular.module('tdc').controller('tdcController', ['$scope', '$rootScope', '$htt
         if(state && state.data) {
             $scope.data = state.data;
             $scope.params = state.params;
-            $scope.curTemplate = require('../templates/certificate.html');
+            $scope.curTemplate = require('../../templates/certificate.html');
         } else {
             showForm();
         }

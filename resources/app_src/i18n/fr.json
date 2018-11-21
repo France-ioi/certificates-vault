@@ -21,5 +21,7 @@
     "cert_verify": "Verifez ce certificat sur:",
     "cert_items_h1": "COMPETENCES VALIDEES",
     "cert_items_h2": "TAUX DE VALIDATION",
-    "cert_items_note": "activite validee en presentiel"
+    "cert_items_note": "activite validee en presentiel",
+    "cert_subitem_name": "Certified at %s by %s on %s",
+    "cert_subitem_name_on_site": "Certified in person at %s by %s on %s"
 }

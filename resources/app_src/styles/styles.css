@@ -95,11 +95,16 @@ nav {
 }
 
 .itemRow {
-    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.itemRow .row {
+    margin-bottom: 5px;
 }
 
 .itemRow .name {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .itemRow .description {
@@ -112,7 +117,12 @@ nav {
 }
 
 .subItems {
-    margin-left: 25px;
+    border-bottom: 1px solid #CCC;
+}
+
+.subItems .name {
+    font-weight: normal;
+    font-style: italic;
 }
 
 #skillsTableFooter {

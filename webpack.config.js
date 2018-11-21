@@ -42,7 +42,7 @@ module.exports = function(env) {
     return {
         devtool: production ? false : 'cheap-module-source-map',
         entry: {
-            app: './resources/app_src/app.js'
+            app: './resources/app_src/js/app.js'
         },
         watchOptions: {
             ignored: [

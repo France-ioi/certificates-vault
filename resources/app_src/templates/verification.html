@@ -19,9 +19,11 @@
             </button>
         </form>
         <div class="alert alert-danger not-found" ng-if="error" ng-i18next="form_not_found"></div>
-        <p id="discoverText" ng-i18next="form_discover"></p>
-        <button id="discoverLink" type="button" class="btn btn-primary">
-            <i class="fa fa-desktop"></i> <span ng-i18next="form_platform_link"></span>
-        </button>
+        <div ng-if="platform_url">
+            <p id="discoverText" ng-i18next="form_discover"></p>
+            <a id="discoverLink" class="btn btn-primary" href="{{platform_url}}">
+                <i class="fa fa-desktop"></i> <span ng-i18next="form_platform_link"></span>
+            </a>
+        </div>
     </div>
 </div>
