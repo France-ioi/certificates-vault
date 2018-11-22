@@ -3,7 +3,6 @@ angular.module('tdc').controller('CertificateController', [
     function($scope, $rootScope, $http, $stateParams, $state) {
 
         $scope.site_url = window.location.origin;
-        //$scope.lng = window.APP_DATA.default_language;
         $scope.error = false;
         $scope.loading = true;
         $scope.data = null;

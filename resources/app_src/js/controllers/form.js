@@ -5,9 +5,9 @@ angular.module('tdc').controller('FormController', [
         $scope.platform_url = window.APP_DATA.platform_url;
 
         $scope.params = {
-            first_name: 'user_first_name',
-            last_name: 'user_last_name',
-            code: '968573849'
+            first_name: '',//'user_first_name',
+            last_name: '',//'user_last_name',
+            code: '',//'968573849'
         };
 
 
