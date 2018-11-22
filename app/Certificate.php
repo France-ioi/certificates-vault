@@ -11,8 +11,10 @@ class Certificate extends Model
         'user_id',
         'latest_id',
         'public',
-        'view_latest'
+        'view_latest',
+
     ];
+
 
 
     public function latestVersion() {
@@ -23,4 +25,22 @@ class Certificate extends Model
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+
+    public function certificateStrings() {
+        return $this->hasMany('App\CertificateString');
+    }
+
+
+    public function getTranslationsAttribute() {
+        $res = [];
+        foreach($this->certificateStrings as $str) {
+            $res[$str->language->code] = [
+                'name' => $str->name,
+                'description' => $str->description
+            ];
+        }
+        return $res;
+    }
+
 }

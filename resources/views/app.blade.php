@@ -8,7 +8,6 @@
         <title>TDC</title>
         <base href="/"/>
         <script type="text/javascript">
-            window.APP_STATE = {!! json_encode($app_state) !!}
             window.APP_DATA = {!! json_encode($app_data) !!}
         </script>
         <script type="text/javascript" src="/assets/vendor.js"></script>

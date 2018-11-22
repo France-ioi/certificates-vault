@@ -30,10 +30,11 @@ class ApiController extends Controller
     }
 
 
-    public function publicCertificates($platform_id, $user_id) {
-        return response()->json(
-            Search::publicCertificates($platform_id, $user_id)
-        );
+    public function publicCertificates($first_name, $last_name) {
+        return response()->json([
+            'success' => true,
+            'data' => Search::publicCertificates($first_name, $last_name)
+        ]);
     }
 
 

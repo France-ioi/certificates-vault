@@ -3,12 +3,12 @@ angular.module('tdc').controller('CertificateController', [
     function($scope, $rootScope, $http, $stateParams, $state) {
 
         $scope.site_url = window.location.origin;
-        $scope.lng = window.APP_DATA.default_language;
+        //$scope.lng = window.APP_DATA.default_language;
         $scope.error = false;
         $scope.loading = true;
         $scope.data = null;
 
-        var url = '/certificates/' +
+        var url = '/api/certificate/' +
             encodeURIComponent($stateParams.first_name) + '/' +
             encodeURIComponent($stateParams.last_name) + '/' +
             encodeURIComponent($stateParams.code);
@@ -28,8 +28,6 @@ angular.module('tdc').controller('CertificateController', [
         function translate() {
             if(!$scope.data) return;
             $scope.strings = $scope.data.translations[$scope.lng];
-            console.log($scope.strings)
-
         }
 
 
@@ -47,22 +45,19 @@ angular.module('tdc').controller('CertificateController', [
             } else {
                 $rootScope.latest_version_url = false;
             }
-/*
+
             if(data.public_list_available) {
                 $rootScope.public_certificates_url = $state.href('public_certificates', {
-                    platform_id: data.user.platform_id,
                     first_name: $stateParams.first_name,
                     last_name: $stateParams.last_name
                 });
             } else {
                 $rootScope.public_certificates_url = false;
             }
-            */
         }
 
 
-        $scope.$on('tdc.languageChange', function(e, lng) {
-            $scope.lng = lng;
+        $scope.$on('tdc.languageChange', function(e) {
             translate();
         })
     }

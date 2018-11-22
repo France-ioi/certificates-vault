@@ -5,6 +5,7 @@ namespace App\Libs;
 use App\Libs\UserHash;
 use App\User;
 use App\CertificateVersion;
+use App\Certificate;
 
 class Search
 {
@@ -29,28 +30,26 @@ class Search
     }
 
 
-    public static function publicCertificates($platform_id, $user_id) {
-        $user = User::query()
-            ->where('platform_id', $platform_id)
-            ->where('external_id', $user_id)
-            ->firstOrFail();
-
-        return CertificateVersion::query()
-            ->whereIn('certificate_id', function($q) use ($user) {
-                $q->select('id')
-                    ->from('certificates')
-                    ->where('user_id', $user->id)
-                    ->where('public', true);
+    public static function publicCertificates($first_name, $last_name) {
+        $hash = UserHash::get($first_name, $last_name);
+        return Certificate::query()
+            ->where('public', true)
+            ->whereHas('latestVersion', function($q) use ($hash) {
+                $q->where('user_hash', $hash);
             })
             ->with([
-                'certificateStrings',
-                'certificateStrings.language',
-                'certificateItems',
-                'certificateItems.item',
-                'certificateItems.item.itemStrings',
-                'certificateItems.item.itemStrings.language'
+                'latestVersion',
+                'latestVersion.certificateStrings',
+                'latestVersion.certificateStrings.language'
             ])
-            ->get();
+            ->get()
+            ->map(function($cert) {
+                return [
+                    'created_at' => $cert->latestVersion->created_at->format('Y-m-d'),
+                    'code' => $cert->latestVersion->verification_code,
+                    'translations' => $cert->translations
+                ];
+            });
     }
 
 }

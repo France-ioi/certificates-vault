@@ -10,7 +10,7 @@ class CertificateApiTest extends TestCase
     {
         $data = $this->loadJSON('generate.json');
         //die($this->json('POST', '/certificates', $data)->response->getContent());
-        $this->json('POST', '/certificates', $data)
+        $this->json('POST', '/api/certificate', $data)
             ->seeJson([
                'success' => true,
             ]);
@@ -21,7 +21,7 @@ class CertificateApiTest extends TestCase
     {
         $data = $this->loadJSON('toggle.json');
         //die($this->json('PATCH', '/certificates/1', $data)->response->getContent());
-        $this->json('PATCH', '/certificates/1', $data)
+        $this->json('PATCH', '/api/certificate/1', $data)
             ->seeJson([
                'success' => true,
             ]);
@@ -30,9 +30,9 @@ class CertificateApiTest extends TestCase
 /*
     public function testList()
     {
-        $this->json('GET', '/public_certificates/1/1')
+        $this->json('GET', '/api/public_certificates/user_first_name/user_last_name')
             ->seeJson([
-
+                'data' => true
             ]);
     }
 */

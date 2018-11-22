@@ -5,7 +5,7 @@ angular.module('tdc').directive('item', function() {
         scope: {
             data: '='
         },
-        controller: ['$i18next', '$scope', '$filter', function ($i18next, $scope, $filter) {
+        controller: ['$i18next', '$scope', '$rootScope', '$filter', function ($i18next, $scope, $rootScope, $filter) {
 
             $scope.root = !!$scope.data.children;
             $scope.trophy_icon = false;
@@ -21,24 +21,24 @@ angular.module('tdc').directive('item', function() {
             }
 
 
-            function translate(lng) {
+            function translate() {
                 if($scope.root) {
-                    $scope.name = $scope.data.translations[lng].name;
+                    $scope.name = $scope.data.translations[$rootScope.lng].name;
                 } else {
                     var key = $scope.data.on_site ? 'cert_subitem_name_on_site' : 'cert_subitem_name';
                     var values = [
                         $scope.data.completion_rate,
-                        $scope.data.translations[lng].name,
+                        $scope.data.translations[$rootScope.lng].name,
                         $filter('toDate')($scope.data.date)
                     ];
                     $scope.name = $i18next.t(key, { postProcess: 'sprintf', sprintf: values });
                 }
-                $scope.description = $scope.data.translations[lng].description;
+                $scope.description = $scope.data.translations[$rootScope.lng].description;
             }
-            translate(window.APP_DATA.default_language);
+            translate();
 
-            $scope.$on('tdc.languageChange', function(e, lng) {
-                translate(lng);
+            $scope.$on('tdc.languageChange', function(e) {
+                translate();
             })
 
 

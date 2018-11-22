@@ -60,7 +60,7 @@ var app = angular.module('tdc', [
             templateUrl: require('../templates/certificate.html')
         })
         .state('public_certificates', {
-            url: '/public_certificates/:first_name/:last_name/:platform_id',
+            url: '/public_certificates/:first_name/:last_name',
             controller: 'PublicCertificatesController',
             templateUrl: require('../templates/public_certificates.html')
         })
@@ -74,7 +74,6 @@ var app = angular.module('tdc', [
 }])
 
 require('./controllers/layout')
-require('./controllers/language_select')
 require('./controllers/form')
 require('./controllers/certificate')
 require('./controllers/public_certificates')

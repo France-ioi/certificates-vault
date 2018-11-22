@@ -1,1 +1,11 @@
-public certs
+<div ng-include="'/spinner.html'" ng-if="loading"></div>
+<div ng-if="data">
+    <ul>
+        <li ng-repeat="item in data">
+            <a href="{{item.url}}">
+                <strong>{{item.created_at|toDate}}</strong>
+                {{item.name}}
+            </a>
+        </li>
+    </ul>
+</div>

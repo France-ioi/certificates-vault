@@ -13,9 +13,9 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav" ng-controller="languageSelectController">
+            <ul class="navbar-nav" >
                 <form class="form-inline">
-                    <select class="form-control" ng-model="lng" ng-change="refresh(lng)">
+                    <select class="form-control" ng-model="lng" ng-change="changeLanguage(lng)">
                         <option ng-repeat="lang in languages" ng-value="lang.code" ng-selected="lang.code == lng">{{lang.name}}</option>
                     </select>
                 </form>
