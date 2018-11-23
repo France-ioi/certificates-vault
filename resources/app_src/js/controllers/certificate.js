@@ -56,8 +56,15 @@ angular.module('tdc').controller('CertificateController', [
         }
 
 
+
         $scope.$on('tdc.languageChange', function(e) {
             translate();
         })
+
+
+        $scope.getQRCodeUrl = function() {
+            return '/qrcode?url=' + encodeURIComponent(location.href)
+        }
+
     }
 ]);
