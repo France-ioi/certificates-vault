@@ -26,7 +26,7 @@ angular.module('tdc').controller('CertificateController', [
 
         function translate() {
             if(!$scope.data) return;
-            $scope.strings = $scope.data.translations[$scope.lng];
+            $scope.strings = $scope.data.translations[$rootScope.lng];
         }
 
 

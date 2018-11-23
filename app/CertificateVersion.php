@@ -63,7 +63,7 @@ class CertificateVersion extends Model
 
 
     public function certificateStrings() {
-        return $this->hasMany('App\CertificateString', 'certificate_id');
+        return $this->hasMany('App\CertificateString', 'certificate_id', 'certificate_id');
     }
 
 

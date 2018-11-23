@@ -2,6 +2,10 @@ angular.module('tdc').controller('PublicCertificatesController', [
     '$scope', '$rootScope', '$http', '$stateParams', '$state',
     function($scope, $rootScope, $http, $stateParams, $state) {
 
+
+        $rootScope.latest_version_url = false;
+        $rootScope.public_certificates_url = false;
+
         $scope.loading = false;
         $scope.data = null;
 

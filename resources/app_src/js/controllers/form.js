@@ -2,6 +2,9 @@ angular.module('tdc').controller('FormController', [
     '$scope', '$rootScope', '$http', '$location', '$i18next',
     function($scope, $rootScope, $http, $location, $i18next) {
 
+        $rootScope.latest_version_url = false;
+        $rootScope.public_certificates_url = false;
+
         $scope.platform_url = window.APP_DATA.platform_url;
 
         $scope.params = {

@@ -38,9 +38,7 @@ class Search
                 $q->where('user_hash', $hash);
             })
             ->with([
-                'latestVersion',
-                'latestVersion.certificateStrings',
-                'latestVersion.certificateStrings.language'
+                'latestVersion'
             ])
             ->get()
             ->map(function($cert) {
